@@ -41,7 +41,6 @@ CREATE TABLE riddles (
     riddle VARCHAR(100) NOT NULL,
     -- may or may not need a category --
     -- need to implement riddle answer column? --
-    riddle_quantity VARCHAR(20) NOT NULL,
     PRIMARY KEY (riddle_id)
 );
 
