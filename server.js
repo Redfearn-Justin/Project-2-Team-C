@@ -1,48 +1,51 @@
-require("dotenv").config();
+// Require and set up an instance of express
 var express = require("express");
-var bodyParser = require("body-parser");
-var exphbs = require("express-handlebars");
-
-var db = require("./models");
-
 var app = express();
-var PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+
+// Body parser middleware
+var bodyParser = require("body-parser");
+
+
+// process.env.PORT required for other parties like Heroku that may want to use their own port
+var PORT = process.env.PORT || 8080;
+
+
+// Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
-// Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
-app.set("view engine", "handlebars");
 
-// Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+// parse application/json
+app.use(bodyParser.json());
 
-var syncOptions = { force: false };
+
+// Set Handlebars
+var exphbs = require("express-handlebars");
+
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
+var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-// Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
-});
 
-module.exports = app;
+// Sets the default layout for express and handlebars
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
+// Import routes and give the server access to them.
+var routes = require("./models/routes.js");
+// Connect the routes to express
+app.use(routes);
+
+
+// Start our server so that it can begin listening to client requests.
+app.listen(PORT, function() {
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
+});
