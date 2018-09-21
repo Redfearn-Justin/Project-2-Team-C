@@ -1,3 +1,185 @@
-.list-group-item {
-  line-height: 2.5;
+/* Variables */
+
+:root {
+  --yellow: #feb90c;
+  --orange: #f25225;
+  --red: #b4054d;
+  --purple: #6a3a64;
+  --teal: #009980;
+}
+
+/* Setup */
+
+body {
+  background-image: url("../images/starry_night_192398.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+  font-family: sans-serif;
+}
+
+.clearfix::after { 
+  content: "";
+  display:block; 
+  clear:both; 
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Main CSS */
+
+.title-bar {
+  font-size: 4.5rem;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 80px;
+  margin-bottom: 20px;
+  width: 830px;
+}
+
+.orion-logo {
+  position: relative;
+  left: 14px;
+  width: 600px;
+}
+
+.content-col {
+  width: 830px;
+  margin: 0 auto;
+  margin-top: 200px;
+}
+
+.text-frame {
+  font-size: .6rem;
+  font-family: 'Press Start 2P';
+  width: 400px;
+  float: right;
+  color: #fff;
+}
+
+.text-title {
+  padding-top: 2px;
+  font-size: 1.3rem;
+  font-family: 'Press Start 2P';
+  line-height: 25px;
+}
+
+.text-divide {
+  width: 100%;
+  border-top: 1px solid white;
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.text-body {
+  line-height: 18px;
+}
+
+/* Menu Buttons */
+
+.button-box {
+  width: 320px;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.menu-buttons {
+  width: 100%;
+  text-align: center;
+  font-family: 'Press Start 2P';
+  padding: 10px;
+  border-radius: 5px;
+  border-style: outset;
+  margin-top: 30px;
+  background-color:#000;
+  color: white;
+  cursor: pointer !important;
+}
+
+.new-game {
+  border: 4px solid var(--yellow);
+}
+
+.leaderboard {
+  border: 4px solid var(--red);
+}
+
+.how-to-play {
+  border: 4px solid var(--teal);
+}
+
+
+/* Image Frame */
+
+.image-frame {
+  width: 400px;
+  height: 420px;
+  float: left;
+  color: #fff;
+}
+
+.stats-bar {
+  width: 400px;
+  height: 50px;
+  border: 8px solid white;
+  border-bottom: 0px;
+  border-radius: 5px 5px 0 0;
+  font-family: 'Press Start 2P';
+}
+
+.stat-20 {
+  font-size: .6rem;
+  width: 21%;
+  text-align: center;
+  line-height: 42px;
+  float: right;
+}
+
+.stat-35 {
+  font-size: .8rem;
+  color: black;
+  background-color: white;
+  width: 35%;
+  text-align: center;
+  line-height: 42px;
+  float: left;
+}
+
+.image-box {
+  width: 400px;
+  height: 400px;
+  background-image: url('../images/asteroid.jpg');
+  border: 8px solid white;
+  border-radius: 0 0 5px 5px;
+}
+
+
+/* Option Buttons */
+
+.option-buttons {
+  width: 100%;
+  text-align: center;
+  font-family: 'Press Start 2P';
+  padding: 10px;
+  border-radius: 4px;
+  border: 3px solid rgb(0, 178, 248);
+  border-style: outset;
+  margin-top: 10px;
+  background-color:#000;
+  color: white;
+  cursor: pointer !important;
+}
+
+/* Bottom Space TO DELETE */ 
+
+.bottom-space { 
+  display: block;
+  margin-top: 100px;
 }
