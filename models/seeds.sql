@@ -4,7 +4,7 @@ INSERT INTO game_Log (scrap_amount, crew_hp, proficiency_points, paragon_points,
 -- default inserts for "merchant_items" --
 
 INSERT INTO merchant_items (item_name, item_category, price, item_quantity)
-VALUES ();
+VALUES ('Self-sealing Stem Bolt', ''), ('');
 
 -- default inserts for "riddle" --
 

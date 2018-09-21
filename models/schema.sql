@@ -1,10 +1,8 @@
 CREATE DATABASE starBlazerDB;
 
--- "starBlazerDB" is just an arbitrarily chosen name --
+-- "starBlazerDB" is just an arbitrarily chosen name for DB --
 
 USE starBlazerDB;
-
--- if use sequelize, STOP HERE --
 
 CREATE TABLE game_Log (
     captain_id INTEGER NOT NULL AUTO_INCREMENT,
@@ -15,7 +13,7 @@ CREATE TABLE game_Log (
     proficiency_points INTEGER (3) NOT NULL,
     death_condition BOOLEAN DEFAULT false,
     victory_condition BOOLEAN DEFAULT false,
-    -- bottom two only needed if implementing good/bad
+    -- bottom two only needed if implementing good/bad stats
     paragon_points INTEGER(2) NOT NULL,
     renegade_points INTEGER(2) NOT NULL,
     PRIMARY KEY (captain_id)
