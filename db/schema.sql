@@ -19,7 +19,7 @@ CREATE TABLE game_Log (
     PRIMARY KEY (captain_id)
 );
 
--- create table for Merchant items --
+-- create table for Merchant items (ICEBOX) --
 
 CREATE TABLE merchant_items (
     item_id INTEGER NOT NULL AUTO_INCREMENT,
@@ -32,7 +32,7 @@ CREATE TABLE merchant_items (
 );
 
 
--- create table for Riddles --
+-- create table for Riddles (ICEBOX) --
 
 CREATE TABLE riddles (
     riddle_id INTEGER NOT NULL AUTO_INCREMENT,
