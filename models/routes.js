@@ -2,29 +2,31 @@
 var orm = require('../config/orm.js');
 
 
-// create the code that will call the ORM functions using burger specific input for the ORM
+// create the code that will call the ORM functions using space-y specific input for the ORM
 var routes = {
-    all: function(cb) {
-      orm.selectAll("burgers", function(res) {
+
+    //Select method
+    select: function(cb) {
+
+      orm.selectAll("game_Log", function(res) {
+
         cb(res);
       });
     },
 
-    // The variables cols and vals are arrays.
-    create: function(cols, vals, cb) {
-      orm.insertOne("burgers", cols, vals, function(res) {
+    //Insert method; The variables cols and vals are arrays.
+    insert: function(cols, vals, cb) {
+
+      orm.insertOne("game_Log", cols, vals, function(res) {
+
         cb(res);
       });
     },
-    
+    //Update method
     update: function(objColVals, condition, cb) {
-      orm.updateOne("burgers", objColVals, condition, function(res) {
-        cb(res);
-      });
-    },
 
-    delete: function(condition, cb) {
-      orm.deleteOne("burgers", condition, function(res) {
+      orm.updateOne("game_Log", objColVals, condition, function(res) {
+        
         cb(res);
       });
     }

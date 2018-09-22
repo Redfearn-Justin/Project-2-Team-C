@@ -7,6 +7,7 @@ var connection = mysql.createConnection({
   user: "root",
   password: "root",
   database: "starBlazerDB"
+  //edit user & password once we push to Heroku !!
 });
 
 // Make connection.

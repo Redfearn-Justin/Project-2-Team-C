@@ -41,6 +41,9 @@ function objToSql(ob) {
 var orm = {
 
     selectAll: (tableInput, cb) => {
+
+        console.log("'select' works");
+
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function (err, res) {
             if (err) {
@@ -51,7 +54,9 @@ var orm = {
     },
 
     insertOne: (table, cols, vals, cb) => {
-        console.log("insert works");
+
+        console.log("'insert' works");
+
         var queryString = "INSERT INTO " + table;
 
         queryString += " (";
@@ -73,6 +78,9 @@ var orm = {
     },
 
     updateOne: (table, objColVals, condition, cb) => {
+
+        console.log("'update/put' works");
+
         var queryString = "UPDATE " + table;
 
         queryString += " SET ";
@@ -81,19 +89,6 @@ var orm = {
         queryString += condition;
 
         console.log(queryString);
-        connection.query(queryString, function (err, result) {
-            if (err) {
-                throw err;
-            }
-
-            cb(result);
-        });
-    },
-
-    deleteOne: (table, condition, cb) => {
-        var queryString = "DELETE FROM " + table;
-        queryString += " WHERE ";
-        queryString += condition;
 
         connection.query(queryString, function (err, result) {
             if (err) {
