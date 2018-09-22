@@ -13,24 +13,24 @@
         <div class="option-buttons create-char-button">Let's Go!</div>
     </div> */
 
-$(".create-char-button").on("click", function (e) {
-  e.preventDefault();
-
-  var charName = $(".char-create").val().trim();
-  var shipName = $(".ship-create").val().trim();
-
-  var newChar = {
-    captian_name: charName,
-    ship_name: shipName
-  }
-
-  $.ajax("/api/newchar", {
-    type: "POST",
-    data: newChar
-  }).then(
-    function () {
-      console.log("created new character");
-    }
-  );
-})
-
+    // $(".create-char-button").on("click", function (e) {
+    //   e.preventDefault();
+    
+    //   var charName = $(".char-create").val().trim();
+    //   var shipName = $(".ship-create").val().trim();
+    
+    //   var newChar = {
+    //     captian_name: charName,
+    //     ship_name: shipName
+    //   }
+    
+    //   $.ajax("/api/newchar", {
+    //     type: "POST",
+    //     data: newChar
+    //   }).then(
+    //     function () {
+    //       console.log("created new character");
+    //     }
+    //   );
+    // });
+    
