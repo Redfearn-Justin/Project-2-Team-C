@@ -39,7 +39,7 @@ app.set("view engine", "handlebars");
 
 
 // Import routes and give the server access to them.
-var routes = require("./models/routes.js");
+var routes = require("./controllers/controller.js");
 // Connect the routes to express
 app.use(routes);
 
