@@ -7,17 +7,26 @@ USE starBlazerDB;
 CREATE TABLE game_Log (
     captain_id INTEGER NOT NULL AUTO_INCREMENT,
     captain_name VARCHAR(20) NOT NULL,
-    vessel_name VARCHAR(50) NOT NULL,
-    scrap_amount INTEGER(10) NOT NULL,
-    crew_hp INTEGER(2) NOT NULL,
+    ship_name VARCHAR(50) NOT NULL,
+    scrap_amount INTEGER(5) NOT NULL,
+    crew_hp INTEGER(3) NOT NULL,
     proficiency_points INTEGER (3) NOT NULL,
     death_condition BOOLEAN DEFAULT false,
     victory_condition BOOLEAN DEFAULT false,
+
+    -- BONUS OBJECTIVES --
+    -- ================================================
+
     -- bottom two only needed if implementing good/bad stats
-    paragon_points INTEGER(2) NOT NULL,
-    renegade_points INTEGER(2) NOT NULL,
+    -- paragon_points INTEGER(2) NOT NULL,
+    -- renegade_points INTEGER(2) NOT NULL,
+    -- cumulative_stats INTEGER(3) NOT NULL,
     PRIMARY KEY (captain_id)
 );
+
+-- ICEBOX TABLES BELOW 
+
+-- ========================================================
 
 -- create table for Merchant items (ICEBOX) --
 
@@ -42,5 +51,13 @@ CREATE TABLE riddles (
     PRIMARY KEY (riddle_id)
 );
 
--- create table for inventory (ICEBOX) -- 
+-- TO DO --
+
+-- BONUS OBJECTIVE
+
+    -- CREATE a SQL function to get the best captain out of all, we do this by:
+        -- ADD all these scores to the Cumulative_Stat column
+        -- sort that column from highest to lowest
+    -- 
+--
 

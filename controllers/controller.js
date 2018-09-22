@@ -24,7 +24,6 @@ router.get("/howtoplay", function (req, res) {
     res.render("new_char");
 })
 
-
 router.post("/api/game_log", function (req, res) {
     models.create([
         "burger_name"
@@ -75,7 +74,6 @@ router.put("/api/game_log/poop/:id", function (req, res) {
         }
     });
 });
-
 
 router.delete("/api/game_log/:id", function (req, res) {
 
