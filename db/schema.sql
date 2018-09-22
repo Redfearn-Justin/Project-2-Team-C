@@ -1,16 +1,43 @@
 CREATE DATABASE starBlazerDB;
 
+CREATE DATABASE testDB;
+
 -- "starBlazerDB" is just an arbitrarily chosen name for DB --
 
 USE starBlazerDB;
 
-CREATE TABLE game_Log (
+USE testDB;
+
+CREATE TABLE game_log (
     captain_id INTEGER NOT NULL AUTO_INCREMENT,
     captain_name VARCHAR(20) NOT NULL,
     ship_name VARCHAR(50) NOT NULL,
-    scrap_amount INTEGER(5) NOT NULL,
-    crew_hp INTEGER(3) NOT NULL,
-    proficiency_points INTEGER (3) NOT NULL,
+    scrap_amount INTEGER(5) NOT NULL DEFAULT 0,
+    crew_hp INTEGER(3) NOT NULL DEFAULT 10,
+    proficiency_points INTEGER (3) NOT NULL DEFAULT 0,
+    death_condition BOOLEAN DEFAULT false,
+    victory_condition BOOLEAN DEFAULT false,
+
+    -- BONUS OBJECTIVES --
+    -- ================================================
+
+    -- bottom two only needed if implementing good/bad stats
+    -- paragon_points INTEGER(2) NOT NULL,
+    -- renegade_points INTEGER(2) NOT NULL,
+    -- cumulative_stats INTEGER(3) NOT NULL,
+    PRIMARY KEY (captain_id)
+);
+
+-- TEST DB
+-- ======================================================
+
+CREATE TABLE test_log (
+    captain_id INTEGER NOT NULL AUTO_INCREMENT,
+    captain_name VARCHAR(20) NOT NULL,
+    ship_name VARCHAR(50) NOT NULL,
+    scrap_amount INTEGER(5) NOT NULL DEFAULT 0,
+    crew_hp INTEGER(3) NOT NULL DEFAULT 10,
+    proficiency_points INTEGER (3) NOT NULL DEFAULT 0,
     death_condition BOOLEAN DEFAULT false,
     victory_condition BOOLEAN DEFAULT false,
 
