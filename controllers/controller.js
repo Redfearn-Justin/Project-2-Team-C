@@ -24,70 +24,73 @@ router.get("/howtoplay", function (req, res) {
     res.render("new_char");
 })
 
-router.post("/api/game_log", function (req, res) {
+router.post("/api/newchar", function (req, res) {
     models.create([
-        "burger_name"
+        'captain_name',
+        'ship_name'
     ], [
-            req.body.burger_name
+            req.body.captain_name,
+            req.body.ship_name
         ], function (result) {
             res.json({ id: result.insertId })
         });
 });
 
 
-router.put("/api/game_log/eat/:id", function (req, res) {
+// router.put("/api/game_log/eat/:id", function (req, res) {
 
-    var condition = "id = " + req.params.id;
+//     var condition = "id = " + req.params.id;
 
-    var objColVals = {
-        devoured: 1,
-        pooped: 0
-    };
+//     var objColVals = {
+//         devoured: 1,
+//         pooped: 0
+//     };
     
 
-    models.update(objColVals, condition, function (result) {
-        if (result.affectedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
-});
+//     models.update(objColVals, condition, function (result) {
+//         if (result.affectedRows == 0) {
+//             // If no rows were changed, then the ID must not exist, so 404
+//             return res.status(404).end();
+//         } else {
+//             res.status(200).end();
+//         }
+//     });
+// });
 
 
-router.put("/api/game_log/poop/:id", function (req, res) {
+// router.put("/api/game_log/poop/:id", function (req, res) {
 
-    var condition = "id = " + req.params.id;
+//     var condition = "id = " + req.params.id;
 
-    var objColVals = {
-        devoured: 0,
-        pooped: 1
-    };
+//     var objColVals = {
+//         devoured: 0,
+//         pooped: 1
+//     };
 
-    models.update(objColVals, condition, function (result) {
-        if (result.affectedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
-});
+//     models.update(objColVals, condition, function (result) {
+//         if (result.affectedRows == 0) {
+//             // If no rows were changed, then the ID must not exist, so 404
+//             return res.status(404).end();
+//         } else {
+//             res.status(200).end();
+//         }
+//     });
+// });
 
-router.delete("/api/game_log/:id", function (req, res) {
 
-    var condition = "id = " + req.params.id;
+// router.delete("/api/game_log/:id", function (req, res) {
 
-    models.delete(condition, function (result) {
-        if (result.affectedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
-});
+//     var condition = "id = " + req.params.id;
+
+//     models.delete(condition, function (result) {
+//         if (result.affectedRows == 0) {
+//             // If no rows were changed, then the ID must not exist, so 404
+//             return res.status(404).end();
+//         } else {
+//             res.status(200).end();
+//         }
+//     });
+// });
 
 
 // Export our router
