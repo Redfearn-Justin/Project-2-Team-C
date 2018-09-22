@@ -1,5 +1,5 @@
 // Require burger.js file
-var routes = require('../models/routes.js');
+var models = require('../models/models.js');
 
 
 // Require express and build our router instance
@@ -9,18 +9,14 @@ var router = express.Router();
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
-    routes.all(function (data) {
-        var hbsObject = {
-            burgers: data
-        };
-        console.log(hbsObject);
-        res.render("index", hbsObject);
+    models.all(function (data) {
+        res.render("index");
     });
 })
 
 
-router.post("/api/burgers", function (req, res) {
-    routes.create([
+router.post("/api/game_log", function (req, res) {
+    models.create([
         "burger_name"
     ], [
             req.body.burger_name
@@ -30,7 +26,7 @@ router.post("/api/burgers", function (req, res) {
 });
 
 
-router.put("/api/burgers/eat/:id", function (req, res) {
+router.put("/api/game_log/eat/:id", function (req, res) {
 
     var condition = "id = " + req.params.id;
 
@@ -40,7 +36,7 @@ router.put("/api/burgers/eat/:id", function (req, res) {
     };
     
 
-    routes.update(objColVals, condition, function (result) {
+    models.update(objColVals, condition, function (result) {
         if (result.affectedRows == 0) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();
@@ -51,7 +47,7 @@ router.put("/api/burgers/eat/:id", function (req, res) {
 });
 
 
-router.put("/api/burgers/poop/:id", function (req, res) {
+router.put("/api/game_log/poop/:id", function (req, res) {
 
     var condition = "id = " + req.params.id;
 
@@ -60,7 +56,7 @@ router.put("/api/burgers/poop/:id", function (req, res) {
         pooped: 1
     };
 
-    routes.update(objColVals, condition, function (result) {
+    models.update(objColVals, condition, function (result) {
         if (result.affectedRows == 0) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();
@@ -71,11 +67,11 @@ router.put("/api/burgers/poop/:id", function (req, res) {
 });
 
 
-router.delete("/api/burgers/:id", function (req, res) {
+router.delete("/api/game_log/:id", function (req, res) {
 
     var condition = "id = " + req.params.id;
 
-    routes.delete(condition, function (result) {
+    models.delete(condition, function (result) {
         if (result.affectedRows == 0) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();

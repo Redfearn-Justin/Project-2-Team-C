@@ -2,19 +2,24 @@
 var express = require("express");
 var app = express();
 
+
 // Body parser middleware
 var bodyParser = require("body-parser");
+
 
 // process.env.PORT required for other parties like Heroku that may want to use their own port
 var PORT = process.env.PORT || 8080;
 
+
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
+
 
 // Set Handlebars
 var exphbs = require("express-handlebars");
@@ -34,7 +39,7 @@ app.set("view engine", "handlebars");
 
 
 // Import routes and give the server access to them.
-var routes = require("./models/routes.js");
+var routes = require("./controllers/controller.js");
 // Connect the routes to express
 app.use(routes);
 
