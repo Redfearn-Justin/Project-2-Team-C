@@ -9,9 +9,19 @@ var router = express.Router();
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
-    models.all(function (data) {
-        res.render("index");
-    });
+    res.render("index");
+})
+
+router.get("/newgame", function (req, res) {
+    res.render("new_char");
+})
+
+router.get("/leaderboard", function (req, res) {
+    res.render("new_char");
+})
+
+router.get("/howtoplay", function (req, res) {
+    res.render("new_char");
 })
 
 
