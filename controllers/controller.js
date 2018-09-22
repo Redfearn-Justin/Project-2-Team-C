@@ -20,6 +20,7 @@ router.get("/", function (req, res) {
 
 
 router.post("/api/burgers", function (req, res) {
+
     routes.create([
         "burger_name"
     ], [
@@ -61,21 +62,6 @@ router.put("/api/burgers/poop/:id", function (req, res) {
     };
 
     routes.update(objColVals, condition, function (result) {
-        if (result.affectedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
-});
-
-
-router.delete("/api/burgers/:id", function (req, res) {
-
-    var condition = "id = " + req.params.id;
-
-    routes.delete(condition, function (result) {
         if (result.affectedRows == 0) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();

@@ -14,7 +14,7 @@ var routes = {
       });
     },
 
-    //Insert method; The variables cols and vals are arrays.
+    //Insert (aka 'create') method; The variables cols and vals are arrays.
     insert: function(cols, vals, cb) {
 
       orm.insertOne("game_Log", cols, vals, function(res) {
