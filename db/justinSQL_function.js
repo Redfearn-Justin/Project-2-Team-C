@@ -66,22 +66,35 @@ function leaderboardDisplay(buttonPressedSQL, buttonPressed ) {
         });
     });
 
-}
+} // function has been "partially" tested; should work as intended
+
+
 
 //function for buttons clicked in the scenerio
 
+
+
 //should be "updating" the various stats, per user's "id"
 
-function scenerioButton () {
-}
+//'statButtonSQL' should be the stat name in SQL syntax (e.g., "scrap_amount")
 
-// SELECT captain_name, ship_name, scrap_amount, crew_hp, proficiency_points FROM game_Log ORDER BY scrap_amount* DESC;
-
-    // could make this a variable per the button being clicked
+//this function does NOT have "mathematic" capabilities;
+    //simply updates the database with new metrics
 //
 
+function scenerioButton (statButtonSQL, statAmount) {
 
-//fix export? (appears as "void");
+    connection.connect(function(err) {
+
+        if(err) throw err;
+
+
+        var sqlQuery = "UPDATE game_Log SET " + statButtonSQL + " = " + statAmount + " WHERE captain_id = " ;
+    });
+}
+
+
+//fix export? (appears as "void", not sure if problem);
 
 module.exports = {
     leaderboardDisplay: leaderboardDisplay,
