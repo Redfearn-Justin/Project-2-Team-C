@@ -30,13 +30,14 @@ router.get("/howtoplay", function (req, res) {
 router.get("/play", function (req, res) {
     var id = idHolder;
 
+    // IF NO ID, (as in typed into the url manually) SEND BACK TO HOME
     if (id) {
         models.selectOne(id, function (result) {
             console.log(result);
             res.render("play", { items: result[0] });
         })
     } else {
-        location.href="/"
+        res.redirect('/');
     }
 });
 
@@ -80,11 +81,12 @@ router.put("/api/changestats", function (req, res) {
     var prof = req.body.prof;
     var id = req.body.id;
 
-    models.update([
-        'scrap_amount',
-        'crew_hp',
-        'proficiency_points'
-    ],
+    models.update(
+        [
+            'scrap_amount',
+            'crew_hp',
+            'proficiency_points'
+        ],
         [
             scrap,
             crew,
@@ -93,7 +95,7 @@ router.put("/api/changestats", function (req, res) {
         `captain_id = ${id}`
         ,
         function (result) {
-            
+            console.log("End of update controller call. Result: " + JSON.stringify(result));
         });
 });
 
