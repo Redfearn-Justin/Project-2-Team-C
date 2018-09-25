@@ -1,30 +1,65 @@
 <div class="content-col clearfix">
 
-    <div class="image-frame">
-        <div class="stats-bar clearfix">
-            <div class="stat-35">OT-001</div>
-            <div class="stat-20">32</div>
-            <div class="stat-20">15</div>
-            <div class="stat-20">1,210</div>
-        </div>
+    <div class="frame-container clearfix">
+        <div class="image-frame">
+            <div class="stats-bar clearfix">
+                <div class="stat-35">
+                    Capt Log<br>
+                    OT-00<span class="idSpan">{{items.captain_id}}</span>
+                </div>
+                <div class="stat-20 prof">
+                    <img height="13px" src="/images/prof_icon.svg">
+                    <span>{{items.proficiency_points}}</span>
+                    <div class="stat-text hide-prof">Proficiency</div>
+                </div>
+                <div class="stat-20 scrap">
+                    <img height="12px" src="/images/scrap_icon.svg">
+                    <span>{{items.scrap_amount}}</span>
+                    <div class="stat-text hide-scrap">Scrap</div>
+                </div>
+                <div class="stat-20 crew">
+                    <img height="12px" src="/images/crew_icon.svg">
+                    <span>{{items.crew_hp}}</span>
+                    <div class="stat-text hide-crew">Crew</div>
+                </div>
+            </div>
 
-        <div class="image-box"></div>
+            <div class="image-box" style="background-image: url('../images/asteroid.jpg');"></div>
+        </div>
     </div>
 
-    <div class="text-frame">
-        <div class="text-title">Asteroid Heading Towards Earth!</div>
-        <div class="text-divide"></div>
-        <div class="text-body">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
-            from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in
-            Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through
-            the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections
-            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in
-            45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of
-            Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</div>
-        <div class="text-divide"></div>
-        <div class="option-buttons">Option 1</div>
-        <div class="option-buttons">Option 2</div>
-        <div class="option-buttons">Option 3</div>
+    <div class="frame-container clearfix">
+        <div class="text-frame">
+            <div class="text-title">Asteroid Heading Towards Earth!</div>
+            <div class="text-divide"></div>
+            <div class="text-body">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                piece of classical Latin literature
+                from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+                College
+                in
+                Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+                going
+                through
+                the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes
+                from
+                sections
+                1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
+                written
+                in
+                45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first
+                line
+                of
+                Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</div>
+            <div class="text-divide"></div>
+            <div data-scrap="2" data-crew="0" data-prof="2" data-chap="1" data-page="1" class="selection1 option-buttons">Option
+                1</div>
+            <div data-scrap="10" data-crew="0" data-prof="-2" data-chap="1" data-page="1" class="selection2 option-buttons">Option
+                2</div>
+            <div data-scrap="0" data-crew="5" data-prof="0" data-chap="1" data-page="1" class="selection3 option-buttons">Option
+                3</div>
+        </div>
     </div>
 
 </div>
+
+<script type="text/javascript" src="/js/choice_buttons.js"></script>
