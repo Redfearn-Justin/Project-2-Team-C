@@ -31,7 +31,7 @@ $(document).ready(function () {
         $('#credits').animate({
             bottom: maskHeight + "px"
         }, {
-            duration: 30000,
+            duration: 20000,
             complete: function () {
                 $('#titles').fadeOut();
                 $('.window').fadeOut();
@@ -39,7 +39,7 @@ $(document).ready(function () {
             },
             step: function (n, t) {
                 var pos = $(this).position();
-                console.log('X: ' + pos.left.toFixed(2) + ' Y: ' + pos.top.toFixed(2));
+                // console.log('X: ' + pos.left.toFixed(2) + ' Y: ' + pos.top.toFixed(2));
             }
         });
 
