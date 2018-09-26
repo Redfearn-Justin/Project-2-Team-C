@@ -38,10 +38,10 @@ function objToSql(ob) {
 // ORM Object with MySQL methods
 var orm = {
 
-    selectAll: (tableInput, cb) => {
-        console.log("'select ORM' works");
+    selectAll: (tableInput, stat, cb) => {
+        console.log("'select Ten ORM' works");
 
-        var queryString = "SELECT * FROM " + tableInput + ";";
+        var queryString = "SELECT * FROM " + tableInput + " ORDER BY " + stat +" DESC LIMIT 10;";
         connection.query(queryString, function (err, res) {
             if (err) {
                 throw err;
