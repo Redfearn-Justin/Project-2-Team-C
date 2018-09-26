@@ -82,14 +82,21 @@ function leaderboardDisplay(buttonPressedSQL, buttonPressed ) {
     //simply updates the database with new metrics
 //
 
-function scenerioButton (statButtonSQL, statAmount) {
+function scenerioButton (statButtonSQL, statAmount, captainID) {
 
     connection.connect(function(err) {
 
         if(err) throw err;
 
 
-        var sqlQuery = "UPDATE game_Log SET " + statButtonSQL + " = " + statAmount + " WHERE captain_id = " ;
+        var sqlQuery = "UPDATE game_Log SET " + statButtonSQL + " = " + statAmount + " WHERE captain_id = " + captainID;
+
+        connection.query(sqlQuery, function() {
+
+            console.log("\n\nCaptain" + captainID + " has successfully been updated");
+
+            console.log("\n\n" + statButtonSQL + " is now equal to: " + statAmount);
+        });
     });
 }
 
