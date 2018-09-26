@@ -1,12 +1,13 @@
 // Require models.js file
 var models = require('../models/models.js');
 
-
 // Require express and build our router instance
 var express = require("express");
 var router = express.Router();
 
+// Establish a variable that will act as a temporary login token
 var idHolder;
+
 
 // HTML ROUTES *************************************************
 
@@ -30,17 +31,6 @@ router.get("/howtoplay", function (req, res) {
     res.render("how_to_play");
 });
 
-
-// API ROUTE: LEADERBOARD TOP 10
-router.select("/api/topstats", function (req, res) {
-    //kinda broken
-    var stat = req.body.
-    models.selectTen()
-    res.render("how_to_play");
-});
-
-
-
 // ROUTE: CREATE CAPTAIN -> FIRST PAGE
 router.get("/play", function (req, res) {
     var id = idHolder;
@@ -56,20 +46,29 @@ router.get("/play", function (req, res) {
     }
 });
 
-// PLAY SEQUENCE ROUTE
+// PLAY SEQUENCE ROUTE (api route acting as an html route)
 router.post("/play/changepage", function (req, res) {
-
+    console.log(req.body);
     var id = req.body.id;
     var chap = req.body.chap;
     var page = req.body.page;
+    var newCrew = req.body.crew;
+    var newScrap = req.body.scrap;
+    var newProf = req.body.prof;
+
+    var newStats = {
+        newCrew: newCrew,
+        newScrap: newScrap,
+        newProf: newProf
+    };
 
     models.selectOne(id, function (result) {
         console.log(result);
         console.log("play_" + chap + "_" + page);
-        res.render("play_" + chap + "_" + page, { layout: false, items: result[0] });
+        res.render("play_" + chap + "_" + page, { layout: false, items: result[0], newStats: newStats });
     });
-
 });
+
 
 // API ROUTES ******************************************************
 
@@ -110,7 +109,16 @@ router.put("/api/changestats", function (req, res) {
         ,
         function (result) {
             console.log("End of controller call");
+            res.send(result);
         });
+});
+
+// LEADERBOARD TOP 10 ROUTE
+router.get("/api/topstats", function (req, res) {
+    //kinda broken
+    var stat = req.body.
+    models.selectTen()
+    res.render("how_to_play");
 });
 
 
