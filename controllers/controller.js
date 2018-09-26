@@ -1,4 +1,4 @@
-// Require burger.js file
+// Require models.js file
 var models = require('../models/models.js');
 
 
@@ -6,24 +6,60 @@ var models = require('../models/models.js');
 var express = require("express");
 var router = express.Router();
 
+var idHolder;
 
-// Create all our routes and set up logic within those routes where required.
+// HTML ROUTES *************************************************
+
 router.get("/", function (req, res) {
     res.render("index");
-})
+});
 
 router.get("/newgame", function (req, res) {
     res.render("new_char");
-})
+});
 
 router.get("/leaderboard", function (req, res) {
-    res.render("new_char");
-})
+    res.render("lb");
+});
 
 router.get("/howtoplay", function (req, res) {
-    res.render("new_char");
-})
+    res.render("how_to_play");
+});
 
+// ROUTE: CREATE CAPTAIN -> FIRST PAGE
+router.get("/play", function (req, res) {
+    var id = idHolder;
+
+    // IF NO ID, (as in typed into the url manually) SEND BACK TO HOME
+    if (id) {
+        models.selectOne(id, function (result) {
+            console.log(result);
+            res.render("play", { items: result[0] });
+        })
+    } else {
+        res.redirect('/');
+    }
+});
+
+// PLAY SEQUENCE ROUTE
+router.get("/play/changepage", function (req, res) {
+    var id = req.body.id;
+    var chap = req.body.chap;
+    var page = req.body.page;
+
+    models.selectOne(id, function (result) {
+        console.log(result);
+        if (result[0].captain_id !== 0) {
+            res.render(`play_${chap}_${page}`, { items: result[0] });
+        } else {
+            res.render("index");
+        }
+    })
+});
+
+// API ROUTES ******************************************************
+
+// NEW CHARACTER ROUTE
 router.post("/api/newchar", function (req, res) {
     models.create([
         'captain_name',
@@ -32,66 +68,37 @@ router.post("/api/newchar", function (req, res) {
             req.body.captain_name,
             req.body.ship_name
         ], function (result) {
-            res.json({ id: result.insertId })
+            var resid = result.insertId;
+            idHolder = resid;
+            res.json({ id: resid });
+        });
+});
+
+// CHANGE STATS ROUTE
+router.put("/api/changestats", function (req, res) {
+    var scrap = req.body.scrap;
+    var crew = req.body.crew;
+    var prof = req.body.prof;
+    var id = req.body.id;
+
+    models.update(
+        [
+            'scrap_amount',
+            'crew_hp',
+            'proficiency_points'
+        ],
+        [
+            scrap,
+            crew,
+            prof
+        ],
+        `captain_id = ${id}`
+        ,
+        function (result) {
+            console.log("End of update controller call. Result: " + JSON.stringify(result));
         });
 });
 
 
-// router.put("/api/game_log/eat/:id", function (req, res) {
-
-//     var condition = "id = " + req.params.id;
-
-//     var objColVals = {
-//         devoured: 1,
-//         pooped: 0
-//     };
-    
-
-//     models.update(objColVals, condition, function (result) {
-//         if (result.affectedRows == 0) {
-//             // If no rows were changed, then the ID must not exist, so 404
-//             return res.status(404).end();
-//         } else {
-//             res.status(200).end();
-//         }
-//     });
-// });
-
-
-// router.put("/api/game_log/poop/:id", function (req, res) {
-
-//     var condition = "id = " + req.params.id;
-
-//     var objColVals = {
-//         devoured: 0,
-//         pooped: 1
-//     };
-
-//     models.update(objColVals, condition, function (result) {
-//         if (result.affectedRows == 0) {
-//             // If no rows were changed, then the ID must not exist, so 404
-//             return res.status(404).end();
-//         } else {
-//             res.status(200).end();
-//         }
-//     });
-// });
-
-
-// router.delete("/api/game_log/:id", function (req, res) {
-
-//     var condition = "id = " + req.params.id;
-
-//     models.delete(condition, function (result) {
-//         if (result.affectedRows == 0) {
-//             // If no rows were changed, then the ID must not exist, so 404
-//             return res.status(404).end();
-//         } else {
-//             res.status(200).end();
-//         }
-//     });
-// });
-
-
-// Export our router
+// EXPORT OUR ROUTER
 module.exports = router;

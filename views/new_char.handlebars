@@ -1,48 +1,77 @@
 <div class="content-col clearfix">
 
-    <div class="image-frame">
-        <div class="image-box"></div>
+    <div class="frame-container clearfix">
+        <div class="image-frame">
+            <div class="stats-bar clearfix">
+                <div class="stat-35">
+                    Capt Log <br>
+                    ________
+                </div>
+                <div class="stat-20 prof">
+                    <img height="13px" src="/images/prof_icon.svg">
+                    <span>---</span>
+                    <div class="stat-text hide-prof">Proficiency</div>
+                </div>
+                <div class="stat-20 scrap">
+                    <img height="12px" src="/images/scrap_icon.svg">
+                    <span>---</span>
+                    <div class="stat-text hide-scrap">Scrap</div>
+                </div>
+                <div class="stat-20 crew">
+                    <img height="12px" src="/images/crew_icon.svg">
+                    <span>---</span>
+                    <div class="stat-text hide-crew">Crew</div>
+                </div>
+            </div>
+
+            <div class="image-box" style="background-image: url('../images/newCharShip.png');"></div>
+        </div>
     </div>
 
-    <div class="text-frame">
-        <div class="text-title">Who are you?</div>
-        <div class="text-divide"></div>
-        <div class="text-body">
-            <form>
-                My name is:<br>
-                <input class="create-input char-create" type="text" name="charName">
-                and I'm the captian of the starship:<br>
-                <input class="create-input ship-create" type="text" name="shipName">
-            </form>
+    <div class="frame-container clearfix">
+        <div class="text-frame">
+            <div class="text-title">Who are you?</div>
+            <div class="text-divide"></div>
+            <div class="text-body">
+                <form>
+                    My name is:<br>
+                    <input class="create-input char-create" type="text" name="charName">
+                    and I'm the captain of the starship:<br>
+                    <input class="create-input ship-create" type="text" name="shipName">
+                </form>
+                <p><span style="color: red;">Careful, Captain!</span><br />
+                If you close your browser or refresh the page you will become lost in space - find your way home or die trying!</p>
+            </div>
+            <div class="text-divide"></div>
+            <div class="option-buttons create-char-button">Let's Go!</div>
         </div>
-        <div class="text-divide"></div>
-        <div class="option-buttons create-char-button">Let's Go!</div>
     </div>
 
 </div>
 
-<script>  
+<script>
 
     $(".create-char-button").on("click", function (e) {
-      e.preventDefault();
-    
-      var charName = $(".char-create").val().trim();
-      var shipName = $(".ship-create").val().trim();
-    
-      var newChar = {
-        captain_name: charName,
-        ship_name: shipName
-      }
-    
-      $.ajax("/api/newchar", {
-        type: "POST",
-        data: newChar
-      }).then(
-        function () {
-          console.log("created new character");
+        e.preventDefault();
+
+        var charName = $(".char-create").val().trim();
+        var shipName = $(".ship-create").val().trim();
+
+        var newChar = {
+            captain_name: charName,
+            ship_name: shipName
         }
-      );
+
+        $.ajax("/api/newchar", {
+            type: "POST",
+            data: newChar
+        }).then(
+            function (idReturn) {
+                console.log(idReturn);
+                console.log("created new character");
+                location.href = "/play";
+            }
+        );
     });
 
 </script>
-

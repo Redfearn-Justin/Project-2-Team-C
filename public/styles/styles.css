@@ -39,19 +39,18 @@ html {
   margin: 0 auto;
   margin-top: 80px;
   margin-bottom: 20px;
-  width: 830px;
 }
 
 .orion-logo {
   position: relative;
-  left: 14px;
+  left: 6px;
   width: 600px;
 }
 
 .content-col {
   width: 830px;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .text-frame {
@@ -81,6 +80,7 @@ html {
   line-height: 18px;
 }
 
+
 /* Menu Buttons */
 
 .button-box {
@@ -98,29 +98,52 @@ html {
   border-radius: 5px;
   border-style: outset;
   margin-top: 30px;
-  background-color:#000;
   color: white;
   cursor: pointer !important;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+a:hover{
+  text-decoration: none;
 }
 
 .new-game {
   border: 4px solid var(--yellow);
 }
 
+.new-game:hover {
+  background-color: rgba(255, 183, 0, 0.15);
+}
+
 .leaderboard {
   border: 4px solid var(--red);
+}
+
+.leaderboard:hover {
+  background-color: #b4054e33;
 }
 
 .how-to-play {
   border: 4px solid var(--teal);
 }
 
+.how-to-play:hover {
+  background-color: #00998018;
+}
+
 
 /* Image Frame */
 
+.frame-container { 
+  float: left;
+  width: 50%;
+  margin-top: 20px;
+}
+
 .image-frame {
   width: 400px;
-  height: 420px;
+  height: auto;
   float: left;
   color: #fff;
 }
@@ -148,14 +171,50 @@ html {
   background-color: white;
   width: 35%;
   text-align: center;
-  line-height: 42px;
   float: left;
+  line-height: 18px;
+  padding-top: 4px;
+  height: 100%;
+}
+
+.stat-text {
+  position: relative;
+  bottom: 28px;
+  font-size: .25rem;
+  z-index: 1000;
+  color: white;
+}
+
+.hide-prof {
+  display: none;
+}
+
+.hide-scrap {
+  display: none;
+}
+
+.hide-crew {
+  display: none;
+}
+
+.prof:hover > .hide-prof {
+  display: block;
+}
+
+.scrap:hover > .hide-scrap {
+  display: block;
+}
+
+.crew:hover > .hide-crew {
+  display: block;
 }
 
 .image-box {
   width: 400px;
   height: 400px;
   background-image: url('../images/asteroid.jpg');
+  background-size: cover;
+  background-position: center;
   border: 8px solid white;
   border-radius: 0 0 5px 5px;
 }
@@ -172,9 +231,17 @@ html {
   border: 3px solid rgb(0, 178, 248);
   border-style: outset;
   margin-top: 10px;
-  background-color:#000;
   color: white;
   cursor: pointer !important;
+  transition: background-color 0.3s ease;
+}
+
+.option-buttons:hover { 
+  background-color: rgba(0, 178, 248, 0.192);
+}
+
+.lb-stats:hover { 
+  background-color: rgba(0, 178, 248, 0.192);
 }
 
 
@@ -194,4 +261,160 @@ html {
 .bottom-space { 
   display: block;
   margin-top: 100px;
+}
+
+
+/* Leaderboard */
+
+.lb-col {
+  color: white;
+  font-family: 'Press Start 2P';
+  width: 830px;
+  margin: 0 auto;
+  margin-top: 40px; 
+}
+
+.lb-button-box {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+.lb-button-holder {
+  width: 25%;
+  padding: 0 4px 0 4px;
+  float: left;
+}
+
+.lb-button {
+  width: 100%;
+  text-align: center;
+  font-family: 'Press Start 2P';
+  padding: 10px;
+  border-radius: 5px;
+  border-style: outset;
+  color: white;
+  cursor: pointer !important;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.lb-stats {
+  border: 4px solid rgb(0, 178, 248);
+}
+
+.lb-sub-button {
+  padding: 4px 8px 4px 8px;
+  border-radius: 4px;
+  font-size: .9rem;
+  margin-top: 10px;
+  float: right;
+}
+
+.lb-list-item {
+  width: 100%;
+  padding: 4px 8px 4px 8px;
+  background-color: grey;
+}
+
+
+@media only screen and (max-width: 830px) {
+
+  .content-col {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .frame-container {
+    width: 100%;
+  }
+
+  .text-frame {
+    width: 400px;
+    float: none;
+    margin: 0 auto;
+  }
+
+  .image-frame {
+    width: 400px;
+    float: none;
+    margin: 0 auto;
+  }
+
+}
+
+
+@media only screen and (max-width: 750px) {
+
+  .orion-logo {
+    width: 80%;
+  }
+
+}
+
+
+@media only screen and (max-width: 550px) {
+
+  .menu-buttons {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+    font-size: .8rem;
+  }
+
+}
+
+
+@media only screen and (max-width: 430px) {
+
+  .content-col {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 0px;
+  }
+
+  .frame-container {
+    width: 100%;
+  }
+
+  .text-frame {
+    width: 95%;
+    float: none;
+    margin: 0 auto;
+  }
+
+  .image-frame {
+    width: 95%;
+    float: none;
+    margin: 0 auto;
+  }
+
+  .image-box {
+    width: 100%;
+    height: 380px;
+  }
+
+  .stats-bar {
+    width: 100%;
+  }
+
+  .stat-35 {
+    font-size: .6rem;
+    line-height: 15px;
+  }
+
+  .stat-20 {
+    font-size: .6rem;
+  }
+
+}
+
+@media only screen and (max-width: 360px) {
+
+  .image-box {
+    width: 100%;
+    height: 340px;
+  }
+
 }
