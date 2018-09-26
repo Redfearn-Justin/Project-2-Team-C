@@ -6,20 +6,17 @@
         <input class="lb-sub-button" type="submit" value="Search">
     </form>
     <p style="margin-bottom: 10px;">
-        Sort by Top 10 Captains:
+        Sort by Top 5 Captains:
     </p>
     <div class="lb-button-box clearfix">
         <div class="lb-button-holder">
-            <div class="lb-button lb-stats">Stats</div>
+            <button class="lb-button lb-scrap">Scrap</button>
         </div>
         <div class="lb-button-holder">
-            <div class="lb-button new-game">Scrap</div>
+            <button class="lb-button lb-crew">Crew</button>
         </div>
         <div class="lb-button-holder">
-            <div class="lb-button leaderboard">Crew</div>
-        </div>
-        <div class="lb-button-holder">
-            <div class="lb-button how-to-play">Prof.</div>
+            <button class="lb-button lb-prof">Proficiency</button>
         </div>
     </div>
 
@@ -28,26 +25,47 @@
 </div>
 
 
-<div class="lb-col">
-
-    <ul>
-        {{#each players}}
-
-        {{> players/players-block}}
-
-        {{/each}}
-    </ul>
-
-</div>
+<div id="leaderboard" class="lb-col"></div>
 
 
 
 
-<script>
-
-    $(".lb-stats").on("click", function () {
+<script type="text/javascript">
 
 
+    //On-click Functions
+    //======================================================
+
+    //On-click function for "scrap"
+    
+
+    $(".lb-scrap").on("click", function () {
+
+        //$.get("/api/")
+
+        //leaderboard.lbDisplay(scrap_amount, "Scrap");
+
+        //console.log("Successfully viewed the 'Scrap Amount' leaderboard");
+        
+    });
+
+    //On-click function for "crew HP"
+
+    $(".lb-crew").on("click", function () {
+
+        //leaderboard.lbDisplay('crew_hp', "Crew HP");
+
+        //console.log("Successfully viewed the 'Crew HP' leaderboard");
+
+    });
+
+    //on-click function for "proficiency"
+
+    $(".lb-prof").on("click", function () {
+
+        //leaderboard.lbDisplay('proficiency_points', "Proficiency Points")
+
+        //console.log("Successfully viewed the 'Proficiency Points' leaderboard");
 
     });
 

@@ -2,20 +2,22 @@
 
 // ===================================
 
-//function for buttons pressed on the Leaderboard page
+//Function for buttons pressed on the Leaderboard page
+
+//=====================================================================================
 
 //'buttonPressed' should be the "data-attribute", or something similar, to that of the corresponding "scoring metric" in question
 
 //'buttonPressedSQL' is for the parallel variable, as to 'buttonPressed', but is in the EXACT form as in database
 
-function leaderboardDisplay(buttonPressedSQL, buttonPressed ) {
+function lbDisplay(buttonPressedSQL, buttonPressed ) {
 
     connection.connect(function(err) {
 
         if(err) throw err;
 
 
-        var sqlQuery = "SELECT captain_name, ship_name, scrap_amount, crew_hp, proficiency_points FROM game_Log ORDER BY " + buttonPressedSQL + " DESC LIMIT 5";
+        var sqlQuery = "SELECT captain_name, ship_name, scrap_amount, crew_hp, proficiency_points FROM game_Log ORDER BY " + buttonPressedSQL + " DESC LIMIT 10";
     
 
         connection.query(sqlQuery, function(err, results) {
@@ -60,8 +62,8 @@ function leaderboardDisplay(buttonPressedSQL, buttonPressed ) {
             htmlTable += "</table>";
 
             // Finally we send the user the HTML file we dynamically created.
-            //if doesn't work properly, consider 'traditionally' inserting table into HTML
-            res.send(htmlTable);
+
+            $("#leaderboard").text(htmlTable);
     
         });
     });
@@ -70,8 +72,9 @@ function leaderboardDisplay(buttonPressedSQL, buttonPressed ) {
 
 
 
-//function for buttons clicked in the scenerio
 
+//Function for buttons clicked in the scenerio
+//======================================================================
 
 
 //should be "updating" the various stats, per user's "id"
@@ -103,7 +106,4 @@ function scenerioButton (statButtonSQL, statAmount, captainID) {
 
 //fix export? (appears as "void", not sure if problem);
 
-module.exports = {
-    leaderboardDisplay: leaderboardDisplay,
-    scenerioButton: scenerioButton    
-}
+module.exports = lbDisplay;
