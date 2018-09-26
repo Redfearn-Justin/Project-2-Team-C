@@ -32,11 +32,13 @@ router.get("/howtoplay", function (req, res) {
 
 
 // API ROUTE: LEADERBOARD TOP 10
-router.select("/api/topstats", function (req, res) {
+router.get("/api/topStats", function (req, res) {
+
     //kinda broken
-    var stat = req.body.
-    models.selectTen()
-    res.render("how_to_play");
+    var stat = req.body.stat;
+
+
+    models.selectTen();
 });
 
 

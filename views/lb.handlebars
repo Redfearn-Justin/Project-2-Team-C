@@ -10,13 +10,13 @@
     </p>
     <div class="lb-button-box clearfix">
         <div class="lb-button-holder">
-            <button class="lb-button lb-scrap">Scrap</button>
+            <div class="lb-button" data-stat="scrap">Scrap</div>
         </div>
         <div class="lb-button-holder">
-            <button class="lb-button lb-crew">Crew</button>
+            <div class="lb-button" data-stat="crew">Crew</div>
         </div>
         <div class="lb-button-holder">
-            <button class="lb-button lb-prof">Proficiency</button>
+            <div class="lb-button" data-stat="prof">Proficiency</div>
         </div>
     </div>
 
@@ -39,13 +39,31 @@
     //On-click function for "scrap"
     
 
-    $(".lb-scrap").on("click", function () {
+    $(".lb-button").on("click", function (event) {
 
-        //$.get("/api/")
+        event.preventDefault();
 
-        //leaderboard.lbDisplay(scrap_amount, "Scrap");
+        var stat = $(this).attr("data-stat")
 
-        //console.log("Successfully viewed the 'Scrap Amount' leaderboard");
+
+
+        var newStat = {
+            stat: stat,
+
+        }
+
+        //left off here
+
+        $.ajax("/api/newchar", {
+            type: "POST",
+            data: newChar
+        }).then(
+            function (idReturn) {
+                console.log(idReturn);
+                console.log("created new character");
+                location.href = "/play";
+            }
+        );
         
     });
 
