@@ -110,11 +110,7 @@ router.put("/api/changestats", function (req, res) {
         function (result) {
 
             console.log("End of controller call");
-<<<<<<< HEAD
             res.send(result);
-=======
-
->>>>>>> c4d3dd51a49040abf7cf2fcb64113576a57c4a3b
         });
 });
 
