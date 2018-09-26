@@ -42,19 +42,18 @@ router.get("/play", function (req, res) {
 });
 
 // PLAY SEQUENCE ROUTE
-router.get("/play/changepage", function (req, res) {
+router.post("/play/changepage", function (req, res) {
+
     var id = req.body.id;
     var chap = req.body.chap;
     var page = req.body.page;
 
     models.selectOne(id, function (result) {
         console.log(result);
-        if (result[0].captain_id !== 0) {
-            res.render(`play_${chap}_${page}`, { items: result[0] });
-        } else {
-            res.render("index");
-        }
-    })
+        console.log("play_" + chap + "_" + page);
+        res.render("play_" + chap + "_" + page, { layout: false, items: result[0] });
+    });
+
 });
 
 // API ROUTES ******************************************************
@@ -95,7 +94,7 @@ router.put("/api/changestats", function (req, res) {
         `captain_id = ${id}`
         ,
         function (result) {
-            console.log("End of update controller call. Result: " + JSON.stringify(result));
+            console.log("End of controller call");
         });
 });
 
