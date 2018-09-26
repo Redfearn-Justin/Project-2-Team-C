@@ -10,6 +10,12 @@ var models = {
     });
   },
 
+  selectOne: function (id, cb) {
+    orm.selectOne("game_log", id, function (res) {
+      cb(res);
+    });
+  },
+
   // The variables cols and vals are arrays.
   create: function (cols, vals, cb) {
     orm.insertOne("game_log", cols, vals, function (res) {
@@ -17,17 +23,20 @@ var models = {
     });
   },
 
-  update: function (objColVals, condition, cb) {
-    orm.updateOne("game_log", objColVals, condition, function (res) {
+  update: function (arrayColNames, arrayValues, condition, cb) {
+    orm.updateOne("game_log", arrayColNames, arrayValues, condition, function (res) {
       cb(res);
     });
   },
 
-  delete: function (condition, cb) {
-    orm.deleteOne("game_log", condition, function (res) {
+  // ================================
+  // NEEDS JUSTIN'S SQL FUNCTIONALITY
+  lbSearch: function (objColVals, condition, cb) {
+    orm.lbSearch("game_log", objColVals, condition, function (res) {
       cb(res);
     });
-  }
+  },
+
 };
 
 

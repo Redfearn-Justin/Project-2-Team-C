@@ -5,11 +5,9 @@ var connection = require("./connection.js");
 // Helper function for SQL syntax - formats "?" better: ["?", "?", "?"].toString() => "?,?,?";
 function printQuestionMarks(num) {
     var arr = [];
-
     for (var i = 0; i < num; i++) {
         arr.push("?");
     }
-
     return arr.toString();
 }
 
@@ -41,8 +39,7 @@ function objToSql(ob) {
 var orm = {
 
     selectAll: (tableInput, cb) => {
-
-        console.log("'select' works");
+        console.log("'select ORM' works");
 
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function (err, res) {
@@ -53,9 +50,49 @@ var orm = {
         });
     },
 
-    insertOne: (table, cols, vals, cb) => {
+    // ORM method used to find and grab all stats from a single Captain using their ID
+    selectOne: (tableInput, id, cb) => {
+        console.log("'select one ORM' works");
 
-        console.log("'insert' works");
+        var queryString = `SELECT * FROM ${tableInput} WHERE captain_id = ${id};`;
+        connection.query(queryString, function (err, res) {
+            if (err) {
+                throw err;
+            }
+            cb(res);
+        });
+    },
+
+    // ORM method used to find and grab all stats from a single Captain using their name (for lb search)
+    captainSearch: (tableInput, name, cb) => {
+        console.log("'captain search ORM' works");
+
+        var queryString = `SELECT * FROM ${tableInput} WHERE captain_name = ${name};`;
+        connection.query(queryString, function (err, res) {
+            if (err) {
+                throw err;
+            }
+            cb(res);
+        });
+    },
+
+    // ================================
+    // NEEDS JUSTIN'S SQL FUNCTIONALITY
+    lbSearch: (tableInput, name, cb) => {
+        console.log("'lbSearch ORM' works");
+
+        var queryString = `SELECT * FROM ${tableInput} WHERE captain_name = ${name};`;
+        connection.query(queryString, function (err, res) {
+            if (err) {
+                throw err;
+            }
+            cb(res);
+        });
+    },
+
+    // ORM method used to create a new Captain (works)
+    insertOne: (table, cols, vals, cb) => {
+        console.log("'insert ORM' works");
 
         var queryString = "INSERT INTO " + table;
 
@@ -66,29 +103,23 @@ var orm = {
         queryString += printQuestionMarks(vals.length);
         queryString += ") ";
 
-        console.log(queryString);
-
         connection.query(queryString, vals, function (err, result) {
             if (err) {
                 throw err;
             }
-            debugger;
+            // To see what the result object is returned
+            // console.log(result);
             cb(result);
         });
     },
 
-    updateOne: (table, objColVals, condition, cb) => {
+    // ORM method used to change the values of our Captain (works)
+    updateOne: (table, arrayColNames, arrayValues, condition, cb) => {
+        console.log("'update/put ORM' works");
+        
+        var queryString = `UPDATE ${table} SET ${arrayColNames[0]} = ${arrayColNames[0]} + ${arrayValues[0]}, ${arrayColNames[1]} = ${arrayColNames[1]} + ${arrayValues[1]}, ${arrayColNames[2]} = ${arrayColNames[2]} + ${arrayValues[2]} WHERE ${condition};`;
 
-        console.log("'update/put' works");
-
-        var queryString = "UPDATE " + table;
-
-        queryString += " SET ";
-        queryString += objToSql(objColVals);
-        queryString += " WHERE ";
-        queryString += condition;
-
-        console.log(queryString);
+        // console.log(queryString);
 
         connection.query(queryString, function (err, result) {
             if (err) {
@@ -98,7 +129,6 @@ var orm = {
             cb(result);
         });
     }
-
 }
 
 // Export the orm object

@@ -1,0 +1,54 @@
+<div class="lb-col">
+    <div class="text-divide"></div>
+    <form>
+        Search by Captain Name:<br>
+        <input class="create-input char-create" style="width: 84%" type="text" name="charName">
+        <input class="lb-sub-button" type="submit" value="Search">
+    </form>
+    <p style="margin-bottom: 10px;">
+        Sort by Top 10 Captains:
+    </p>
+    <div class="lb-button-box clearfix">
+        <div class="lb-button-holder">
+            <div class="lb-button lb-stats">Stats</div>
+        </div>
+        <div class="lb-button-holder">
+            <div class="lb-button new-game">Scrap</div>
+        </div>
+        <div class="lb-button-holder">
+            <div class="lb-button leaderboard">Crew</div>
+        </div>
+        <div class="lb-button-holder">
+            <div class="lb-button how-to-play">Prof.</div>
+        </div>
+    </div>
+
+    <div class="text-divide"></div>
+
+</div>
+
+
+<div class="lb-col">
+
+    <ul>
+        {{#each players}}
+
+        {{> players/players-block}}
+
+        {{/each}}
+    </ul>
+
+</div>
+
+
+
+
+<script>
+
+    $(".lb-stats").on("click", function () {
+
+
+
+    });
+
+</script>
