@@ -30,11 +30,12 @@ $(".selection1").on("click", function () {
             console.log("DOESNT GET HERE")
 
             $.ajax("/play/changepage", {
-                type: "GET",
+                type: "POST",
                 data: idObj
             }).then(
                 function (res) {
                     console.log(res);
+                    $('body').html(res);
                 }
             );
 
