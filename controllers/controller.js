@@ -22,9 +22,24 @@ router.get("/leaderboard", function (req, res) {
     res.render("lb");
 });
 
+router.get("/play/credits", function (req, res) {
+    res.render("credits");
+});
+
 router.get("/howtoplay", function (req, res) {
     res.render("how_to_play");
 });
+
+
+// API ROUTE: LEADERBOARD TOP 10
+router.select("/api/topstats", function (req, res) {
+    //kinda broken
+    var stat = req.body.
+    models.selectTen()
+    res.render("how_to_play");
+});
+
+
 
 // ROUTE: CREATE CAPTAIN -> FIRST PAGE
 router.get("/play", function (req, res) {
@@ -94,8 +109,9 @@ router.put("/api/changestats", function (req, res) {
         `captain_id = ${id}`
         ,
         function (result) {
-            console.log("End of update controller call. Result: " + JSON.stringify(result));
-            res.json(true);
+
+            console.log("End of controller call");
+
         });
 });
 
