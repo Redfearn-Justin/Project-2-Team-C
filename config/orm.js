@@ -36,6 +36,9 @@ function objToSql(ob) {
 
 
 // ORM Object with MySQL methods
+
+//changes made
+//=======================================================
 var orm = {
 
     selectTen: (tableInput, stat, cb) => {
@@ -46,50 +49,13 @@ var orm = {
 
         connection.query(queryString, function (err, res) {
 
-            // if (err) throw err;
+            if (err) throw err;
 
-            var htmlTable = "<table id='leaderboard'>"
+            cb(res);
 
-            //table headers
-
-            htmlTable += "<tr> <th> Rank </th> <th> Captain Name </th> <th> " + stat + " </th> </tr>";
-
-            //variable to establish rank
-    
-            var placementNumber = 0;
-
-            //For loop for going through
-
-            for (var i = 0; i < res.length; i++) {
-
-                placementNumber++;
-
-                htmlTable += "<tr>"
-
-                //entering rank into 1st column
-
-                htmlTable += "<td>" + placementNumber + "</td>";
-
-                //entering captain's name into 2nd column 
-
-                htmlTable += "<td>" + res[i].captain_name + "</td>";
-
-                //entering score amount into final column (might need to fix, as "buttonPressed" is a 'dynamic variable')
-
-                htmlTable += "<td>" + res[i].stat + "</td>";
-
-                //close the table row after making row
-                htmlTable += "</tr>"
-            }
-
-            // closing table
-            htmlTable += "</table>";
-
-            // Finally we send the user the HTML file we dynamically created.
-
-            //$("#leaderboard").text(htmlTable);
         });
     },
+    //===========================================
 
     // ORM method used to find and grab all stats from a single Captain using their ID
     selectOne: (tableInput, id, cb) => {

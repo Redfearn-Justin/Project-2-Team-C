@@ -10,13 +10,13 @@
     </p>
     <div class="lb-button-box clearfix">
         <div class="lb-button-holder">
-            <div class="lb-button" data-stat="scrap">Scrap</div>
+            <div class="lb-button" data-stat="scrap_amount" data-title="Scrap">Scrap</div>
         </div>
         <div class="lb-button-holder">
-            <div class="lb-button" data-stat="crew">Crew</div>
+            <div class="lb-button" data-stat="crew_hp" data-title="Crew">Crew</div>
         </div>
         <div class="lb-button-holder">
-            <div class="lb-button" data-stat="prof">Proficiency</div>
+            <div class="lb-button" data-stat="proficiency_points" data-title="Proficiency">Proficiency</div>
         </div>
     </div>
 
@@ -42,7 +42,10 @@
         event.preventDefault();
 
         var stat = $(this).attr("data-stat")
-
+        var statTitle = $(this).attr("data-title");
+        
+        //Attempt to resolve 'results[i].stat bug'
+        var subStat = "results[i]." + stat;  
 
 
         var newStat = {
@@ -50,16 +53,58 @@
         }
 
 
-        $.ajax("/api/topStats", {
-
-            type: "GET",
+        $.ajax("/api/topstats", {
+            type: "POST",
             data: newStat
 
         }).then(
 
-            function (json) {
+            function (result) {
 
-                //$("#leaderboard").text(json);
+                console.log("got into AJAX call, yay");
+
+                console.log(result);
+
+                var htmlTable = "<table id='leaderboard'>"
+
+                //table headers
+
+                htmlTable += "<tr> <th> Rank </th> <th> Captain Name </th> <th> " + statTitle + " </th> </tr>";
+
+                //variable to establish rank
+    
+                var placementNumber = 0;
+
+                //For loop for going through
+
+                for (var i = 0; i < result.length; i++) {
+
+                    placementNumber++;
+
+                    htmlTable += "<tr>"
+
+                    //entering rank into 1st column
+
+                    htmlTable += "<td>" + placementNumber + "</td>";
+
+                    //entering captain's name into 2nd column 
+
+                    htmlTable += "<td>" + result[i].captain_name + "</td>";
+
+                    //entering score amount into final column (might need to fix, as "buttonPressed" is a 'dynamic variable')
+
+                    htmlTable += "<td>" + result[i].stat + "</td>";
+
+                    console.log(result[i].stat);
+
+                    //close the table row after making row
+                    htmlTable += "</tr>"
+                }
+
+                // closing table
+                htmlTable += "</table>";
+
+                $("#leaderboard").html(htmlTable);
 
 
             }

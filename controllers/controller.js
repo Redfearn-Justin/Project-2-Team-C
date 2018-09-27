@@ -33,18 +33,20 @@ router.get("/howtoplay", function (req, res) {
 
 
 // API ROUTE: LEADERBOARD TOP 10
-router.get("/api/topStats/:stat", function (req, res) {
+// router.get("/leaderboard/:stat", function (req, res) {
 
-    console.log("accessing API route...");
+//     console.log("accessing API route...");
 
-    //kinda broken
-    var stat = req.param.stat;
+//     //kinda broken
+//     var stat = req.param.stat;
 
-    console.log( "this is the stat: " + stat);
+//     console.log( "this is the stat: " + stat);
 
 
-    models.selectTen();
-});
+//     models.selectTen(stat, function() {
+//         console.log("do something in the callback");
+//     });
+// });
 
 
 
@@ -132,11 +134,15 @@ router.put("/api/changestats", function (req, res) {
 });
 
 // LEADERBOARD TOP 10 ROUTE
-router.get("/api/topstats", function (req, res) {
-    //kinda broken
-    var stat = req.body.
-    models.selectTen()
-    res.render("how_to_play");
+router.post("/api/topstats", function (req, res) {
+    //hopefully less broken
+    var stat = req.body.stat;
+    
+    models.selectTen(stat, 
+        function (result) {
+        res.json(result);
+    })
+    
 });
 
 
