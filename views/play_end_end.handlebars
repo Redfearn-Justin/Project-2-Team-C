@@ -1,0 +1,67 @@
+<!-- TEMPLATE PAGE -->
+
+<div class="content-col clearfix">
+
+    <!-- IMAGE FRAME DOESN'T CHANGE EXCEPT FOR BACKGROUND IMG -->
+    <div class="frame-container clearfix">
+        <div class="image-frame">
+            <div class="stats-bar clearfix">
+                <div class="stat-35">
+                    Capt Log<br>
+                    OT-00<span class="idSpan">{{items.captain_id}}</span>
+                </div>
+                <div class="stat-20 prof">
+                    <img height="13px" src="/images/prof_icon.svg">
+                    <span>{{items.proficiency_points}}</span>
+                    <div class="stat-text hide-prof">Proficiency</div>
+                </div>
+                <div class="stat-20 scrap">
+                    <img height="12px" src="/images/scrap_icon.svg">
+                    <span>{{items.scrap_amount}}</span>
+                    <div class="stat-text hide-scrap">Scrap</div>
+                </div>
+                <div class="stat-20 crew">
+                    <img height="12px" src="/images/crew_icon.svg">
+                    <span>{{items.crew_hp}}</span>
+                    <div class="stat-text hide-crew">Crew</div>
+                </div>
+            </div>
+
+            <div class="image-box" style="background-image: url('../images/storyimg/end.png');"></div>
+        </div>
+    </div>
+
+    <div class="frame-container clearfix">
+        <div class="text-frame">
+            <div class="text-title">
+                <span style="color: rgb(0, 187, 0);">Welcome home, Captain {{items.captain_name}}!</span>
+            </div>
+            <div class="text-divide"></div>
+            <div class="text-body">
+                <div style="text-align: center; font-size: 1rem; margin-bottom: 5px;">Final Stats:</div>
+                <div class="results-container clearfix">
+                    <div class="results-box"><img height="19px" src="/images/crew_icon.svg"><span class="results-span">{{items.crew_hp}}</span></div>
+                    <div class="results-box"><img height="19px" src="/images/scrap_icon.svg"><span class="results-span">{{items.scrap_amount}}</span></div>
+                    <div class="results-box"><img height="19px" src="/images/prof_icon.svg"><span class="results-span">{{items.proficiency_points}}</span></div>
+                </div>
+                After a long journey back you and your crew are welcomed home with great reception.
+                <br />
+                <br />
+                "We thought you were dead! Thank the stars!"
+            </div>
+            <div class="text-divide"></div>
+
+            <!-- CHANGE DATA-ATTRIBUTES FOR EACH CHOICE // CHANGE DATA-CHAP/DATA-PAGE TO THE NEXT PAGE (SAME FOR EACH BUTTON) -->
+            <a href="/"><div class="option-buttons">
+                Home
+            </div></a>
+            <a href="/leaderboard"><div class="option-buttons">
+                Leaderboard
+            </div></a>
+            <a href="/play/credits"><div class="option-buttons">
+                Credits
+            </div></a>
+        </div>
+    </div>
+
+</div>

@@ -35,12 +35,10 @@ $(".option-buttons").on("click", function () {
                 data: idObj
             }).then(
                 function (res) {
-                    console.log("test");
-                    console.log(res);
                     $('body').html(res);
                 }
             );
-            console.log(result);
+            // console.log(result);
         }
     );
 });

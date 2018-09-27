@@ -6,7 +6,7 @@ var express = require("express");
 var router = express.Router();
 
 // Establish a variable that will act as a temporary login token
-var idHolder;
+var idHolder = "x";
 
 
 // HTML ROUTES *************************************************
@@ -55,9 +55,10 @@ router.get("/play", function (req, res) {
     var id = idHolder;
 
     // IF NO ID, (as in typed into the url manually) SEND BACK TO HOME
-    if (id) {
+    if (id !== "x") {
         models.selectOne(id, function (result) {
             console.log(result);
+            idHolder = "x";
             res.render("play", { items: result[0] });
         })
     } else {
@@ -127,7 +128,6 @@ router.put("/api/changestats", function (req, res) {
         `captain_id = ${id}`
         ,
         function (result) {
-
             console.log("End of controller call");
             res.send(result);
         });
@@ -135,14 +135,12 @@ router.put("/api/changestats", function (req, res) {
 
 // LEADERBOARD TOP 10 ROUTE
 router.post("/api/topstats", function (req, res) {
-    //hopefully less broken
     var stat = req.body.stat;
     
     models.selectTen(stat, 
         function (result) {
         res.json(result);
     })
-    
 });
 
 
