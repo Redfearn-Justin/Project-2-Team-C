@@ -4,7 +4,7 @@ var orm = require('../config/orm.js');
 
 // create the code that will call the ORM functions using burger specific input for the ORM
 var models = {
-  all: function (cb) {
+  selectTen: function (cb) {
     orm.selectTen("game_log", stat, function (res) {
       cb(res);
     });

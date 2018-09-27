@@ -38,7 +38,7 @@ function objToSql(ob) {
 // ORM Object with MySQL methods
 var orm = {
 
-    selectAll: (tableInput, stat, cb) => {
+    selectTen: (tableInput, stat, cb) => {
 
         console.log("'select Ten ORM' works");
 
@@ -46,7 +46,7 @@ var orm = {
 
         connection.query(queryString, function (err, res) {
 
-            if (err) throw err;
+            // if (err) throw err;
 
             var htmlTable = "<table id='leaderboard'>"
 
@@ -76,7 +76,7 @@ var orm = {
 
                 //entering score amount into final column (might need to fix, as "buttonPressed" is a 'dynamic variable')
 
-                htmlTable += "<td>" + res[i].buttonPressedSQL + "</td>";
+                htmlTable += "<td>" + res[i].stat + "</td>";
 
                 //close the table row after making row
                 htmlTable += "</tr>"
@@ -87,7 +87,7 @@ var orm = {
 
             // Finally we send the user the HTML file we dynamically created.
 
-            $("#leaderboard").text(htmlTable);
+            //$("#leaderboard").text(htmlTable);
         });
     },
 

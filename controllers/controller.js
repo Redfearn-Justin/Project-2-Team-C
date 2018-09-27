@@ -32,10 +32,14 @@ router.get("/howtoplay", function (req, res) {
 
 
 // API ROUTE: LEADERBOARD TOP 10
-router.get("/api/topStats", function (req, res) {
+router.get("/api/topStats/:stat", function (req, res) {
+
+    console.log("accessing API route...");
 
     //kinda broken
-    var stat = req.body.stat;
+    var stat = req.param.stat;
+
+    console.log( "this is the stat: " + stat);
 
 
     models.selectTen();

@@ -6,7 +6,7 @@
         <input class="lb-sub-button" type="submit" value="Search">
     </form>
     <p style="margin-bottom: 10px;">
-        Sort by Top 5 Captains:
+        Sort by Top 10 Captains:
     </p>
     <div class="lb-button-box clearfix">
         <div class="lb-button-holder">
@@ -35,8 +35,6 @@
 
     //On-click Functions
     //======================================================
-
-    //On-click function for "scrap"
     
 
     $(".lb-button").on("click", function (event) {
@@ -49,42 +47,24 @@
 
         var newStat = {
             stat: stat,
-
         }
 
-        //left off here
 
-        $.ajax("/api/newchar", {
-            type: "POST",
-            data: newChar
+        $.ajax("/api/topStats", {
+
+            type: "GET",
+            data: newStat
+
         }).then(
-            function (idReturn) {
-                console.log(idReturn);
-                console.log("created new character");
-                location.href = "/play";
+
+            function (json) {
+
+                //$("#leaderboard").text(json);
+
+
             }
         );
         
-    });
-
-    //On-click function for "crew HP"
-
-    $(".lb-crew").on("click", function () {
-
-        //leaderboard.lbDisplay('crew_hp', "Crew HP");
-
-        //console.log("Successfully viewed the 'Crew HP' leaderboard");
-
-    });
-
-    //on-click function for "proficiency"
-
-    $(".lb-prof").on("click", function () {
-
-        //leaderboard.lbDisplay('proficiency_points', "Proficiency Points")
-
-        //console.log("Successfully viewed the 'Proficiency Points' leaderboard");
-
     });
 
 </script>
