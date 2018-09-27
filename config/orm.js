@@ -36,19 +36,26 @@ function objToSql(ob) {
 
 
 // ORM Object with MySQL methods
+
+//changes made
+//=======================================================
 var orm = {
 
-    selectAll: (tableInput, stat, cb) => {
+    selectTen: (tableInput, stat, cb) => {
+
         console.log("'select Ten ORM' works");
 
         var queryString = "SELECT * FROM " + tableInput + " ORDER BY " + stat +" DESC LIMIT 10;";
+
         connection.query(queryString, function (err, res) {
-            if (err) {
-                throw err;
-            }
+
+            if (err) throw err;
+
             cb(res);
+
         });
     },
+    //===========================================
 
     // ORM method used to find and grab all stats from a single Captain using their ID
     selectOne: (tableInput, id, cb) => {

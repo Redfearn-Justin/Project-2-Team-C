@@ -1,6 +1,6 @@
 -- default inserts for "game_log" --
 
-INSERT INTO game_Log (scrap_amount, crew_hp, proficiency_points) VALUES (0, 10, 0, 0, 0);
+INSERT INTO game_Log (scrap_amount, crew_hp, proficiency_points) VALUES (1, 10, 0);
 
 
 -- ICEBOX INSERTS
@@ -20,10 +20,4 @@ INSERT INTO game_Log (scrap_amount, crew_hp, proficiency_points) VALUES (0, 10, 
 
 -- INSERT INTO riddles (riddle)
 -- VALUES ();
-
--- FUNCTION FOR FINAL PAGE BUTTONS 
-
--- ===================================================================================
-
--- SELECT captain_name, ship_name, scrap_amount, crew_hp, proficiency_points FROM game_Log ORDER BY scrap_amount DESC;
 
