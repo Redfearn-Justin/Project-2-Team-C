@@ -1,4 +1,4 @@
-<!-- TEMPLATE PAGE -->
+<!-- TEMPLATE PAGE FOR MIDDLE PAGES -->
 
 <div class="content-col clearfix">
 
@@ -34,26 +34,31 @@
     <div class="frame-container clearfix">
         <div class="text-frame">
             <div class="text-title">
-                <!-- TITLE TEXT -->
+                <span style="color: red;">Game Over</span>
             </div>
             <div class="text-divide"></div>
             <div class="text-body">
-                <!-- BODY TEXT -->
+                <div class="results-container clearfix">
+                    <div class="results-box"><img height="19px" src="/images/crew_icon.svg"><span class="results-span">{{newStats.newCrew}}</span></div>
+                    <div class="results-box"><img height="19px" src="/images/scrap_icon.svg"><span class="results-span">{{newStats.newScrap}}</span></div>
+                    <div class="results-box"><img height="19px" src="/images/prof_icon.svg"><span class="results-span">{{newStats.newProf}}</span></div>
+                </div>
+                You press the button. The light from the artifact grows brighter and brighter. After a few seconds, your hands feel warm. It spreads throughout your body, and quickly the warmth becomes a light tingling. The light is almost blinding by now.
+                <br /> 
+                <br />
+                "What's happening?!" Your first mate screams.
+                <br />
+                <br /> 
+                The back of your eyes begin to burn. You clasp your hands over your eyes as you drop the artifact. The pain grows to be unbearable. You open your eyes, and for a brief second, you can see everything. More than everything - things you could have never concieved.
+                <br />
+                <br />
+                And as soon as it began it ends. You collapse under the experience, never to wake again.
             </div>
             <div class="text-divide"></div>
 
-            <!-- CHANGE DATA-ATTRIBUTES FOR EACH CHOICE // CHANGE DATA-CHAP/DATA-PAGE TO THE NEXT PAGE (SAME FOR EACH BUTTON) -->
-            <div data-scrap="2" data-crew="0" data-prof="2" data-chap="1" data-page="1" class="option-buttons">
-                <!-- OPTION TEXT -->
-            </div>
-            <div data-scrap="10" data-crew="0" data-prof="-2" data-chap="1" data-page="1" class="option-buttons">
-                <!-- OPTION TEXT -->
-            </div>
-            <div data-scrap="1" data-crew="5" data-prof="3" data-chap="1" data-page="1" class="option-buttons">
-                <!-- OPTION TEXT -->
-            </div>
-            <div data-scrap="-10" data-crew="2" data-prof="5" data-chap="1" data-page="1" class="option-buttons">
-                <!-- OPTION TEXT -->
+            <!-- OKAY BUTTON TO JUST CHANGE THE PAGE -->
+            <div data-scrap="0" data-crew="0" data-prof="0" data-chap="1" data-page="1" class="option-buttons-2 home-button">
+                Home
             </div>
         </div>
     </div>
