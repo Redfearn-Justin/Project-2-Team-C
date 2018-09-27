@@ -10,28 +10,26 @@
  */
 $(document).ready(function () {
 
-    $('a[name=creditos]').click(function (e) {
-        e.preventDefault();
-        
-        var maskHeight = $(document).height();
-        var maskWidth = $(window).width();
+    var maskHeight = $(document).height();
+    var maskWidth = $(window).width();
 
-        $('#titles').css({
-            'width': maskWidth,
-            'height': maskHeight
-        });
+    $('#titles').css({
+        'width': maskWidth - 30,
+        'height': maskHeight
+    });
 
-        $('#titles').fadeIn(1000);
-        $('#titles').fadeTo("slow");
-        $('#titles').fadeIn();
-        $('#credits').css("left", (($('#credits').parent().width() - $('#credits').outerWidth()) / 2) + "px");
-        $('#credits').css("bottom", "-" + (maskHeight * 2) + "px");
-        $('#credits').show('slow');
+    $('#titles').fadeIn(1000);
+    $('#titles').fadeTo("slow");
+    $('#titles').fadeIn();
+    $('#credits').css("left", (($('#credits').parent().width() - $('#credits').outerWidth()) / 2) + "px");
+    $('#credits').css("bottom", "-" + (maskHeight + 50) + "px");
+    $('#credits').show('slow');
 
-        $('#credits').animate({
-            bottom: maskHeight + "px"
-        }, {
-            duration: 20000,
+    setTimeout(function() {location.href="/";} , 25000)
+    $('#credits').animate({
+        bottom: maskHeight + "px"
+    }, {
+            duration: 25000,
             complete: function () {
                 $('#titles').fadeOut();
                 $('.window').fadeOut();
@@ -43,18 +41,6 @@ $(document).ready(function () {
             }
         });
 
-    });
 
-    $('.window .close').click(function (e) {
-        e.preventDefault();
-        $('#credits').css("bottom", "-" + ($(document).height() * 2) + "px");
-        $('#titles').hide();
-        $('.window').hide();
-    });
-
-    $('#titles').click(function () {
-        $(this).hide();
-        $('#credits').css("bottom", "-" + ($(document).height() * 2) + "px");
-        $('.window').hide();
-    });
+        
 });

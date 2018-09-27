@@ -1,6 +1,6 @@
 #titles {
+    margin: 0 auto;
     overflow: hidden;
-    background-color: #000;
     font-family: Arial, Helvetica, sans-serif;
     display: none;
     position: absolute;

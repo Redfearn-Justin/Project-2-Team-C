@@ -1,33 +1,54 @@
-<div class="lb-col">
+<div class="lb-col lb-font">
+    <div class="lb-logo-container">
+        <img class="lb-logo" src="/images/LEADERBOARD.png">
+    </div>
     <div class="text-divide"></div>
+    {{!-- CAPTAIN SEARCH FORM - STILL NEED FUNCTIONALITY
     <form>
         Search by Captain Name:<br>
         <input class="create-input char-create" style="width: 84%" type="text" name="charName">
         <input class="lb-sub-button" type="submit" value="Search">
-    </form>
+    </form> --}}
     <p style="margin-bottom: 10px;">
         Sort by Top 10 Captains:
     </p>
     <div class="lb-button-box clearfix">
         <div class="lb-button-holder">
-            <div class="lb-button" data-stat="scrap_amount" data-title="Scrap">Scrap</div>
+            <div class="lb-button new-game" data-stat="scrap_amount" data-title="Scrap">Scrap</div>
         </div>
         <div class="lb-button-holder">
-            <div class="lb-button" data-stat="crew_hp" data-title="Crew">Crew</div>
+            <div class="lb-button leaderboard" data-stat="crew_hp" data-title="Crew">Crew</div>
         </div>
         <div class="lb-button-holder">
-            <div class="lb-button" data-stat="proficiency_points" data-title="Proficiency">Proficiency</div>
+            <div class="lb-button how-to-play" data-stat="proficiency_points" data-title="Proficiency">Proficiency</div>
         </div>
     </div>
 
     <div class="text-divide"></div>
 
-</div>
+    <div class="lb-get-started">Click a stat to see the Top 10 Captains!</div>
 
+</div>
 
 <div id="leaderboard" class="lb-col"></div>
 
 
+<div class="lb-col clearfix;">
+    <div class="text-divide"></div>
+
+    <div class="lb-nav-container">
+        <a href="/">
+            <div class="option-buttons lb-font" style="width: 98%; margin: 0 auto;">Home</div>
+        </a>
+    </div>
+
+    <div class="lb-nav-container">
+        <a href="/newgame">
+            <div class="option-buttons lb-font" style="width: 98%; margin: 0 auto;">New Game</div>
+        </a>
+    </div>
+
+</div>
 
 
 <script type="text/javascript">
@@ -35,17 +56,19 @@
 
     //On-click Functions
     //======================================================
-    
+
 
     $(".lb-button").on("click", function (event) {
 
         event.preventDefault();
 
+        $(".lb-get-started").css("display", "none");
+
         var stat = $(this).attr("data-stat")
         var statTitle = $(this).attr("data-title");
-        
+
         //Attempt to resolve 'results[i].stat bug'
-        var subStat = "results[i]." + stat;  
+        var subStat = "results[i]." + stat;
 
 
         var newStat = {
@@ -65,14 +88,23 @@
 
                 console.log(result);
 
-                var htmlTable = "<table id='leaderboard'>"
+                var htmlTable = "<table id='leaderboard-table'>"
 
-                //table headers
 
-                htmlTable += "<tr> <th> Rank </th> <th> Captain Name </th> <th> " + statTitle + " </th> </tr>";
+                // htmlTable += "<tr> <th> Rank </th> <th> Captain Name </th> <th> " + statTitle + " </th> </tr>";
+
+                if (stat == "scrap_amount") {
+                    htmlTable += "<tr> <th> Rank </th> <th> Captain Name </th> <th style='color:red; text-align: center;'> Crew </th> <th style='color:red; text-align: center; background-color: rgba(255, 82, 82, 0.15);'> Scrap </th> <th style='color:red; text-align: center;'> Prof. </th> </tr>";
+                } else if (stat == "crew_hp") {
+                    htmlTable += "<tr> <th> Rank </th> <th> Captain Name </th> <th style='color:red; text-align: center; background-color: rgba(255, 82, 82, 0.15);'> Crew </th> <th style='color:red; text-align: center;'> Scrap </th> <th style='color:red; text-align: center;'> Prof. </th> </tr>";
+                } else if (stat == "proficiency_points") {
+                    htmlTable += "<tr> <th> Rank </th> <th> Captain Name </th> <th style='color:red; text-align: center;'> Crew </th> <th style='color:red; text-align: center;'> Scrap </th> <th style='color:red; text-align: center; background-color: rgba(255, 82, 82, 0.15);'> Prof. </th> </tr>";
+                }
+
+
 
                 //variable to establish rank
-    
+
                 var placementNumber = 0;
 
                 //For loop for going through
@@ -93,9 +125,9 @@
 
                     //entering score amount into final column (might need to fix, as "buttonPressed" is a 'dynamic variable')
 
-                    htmlTable += "<td>" + result[i].stat + "</td>";
-
-                    console.log(result[i].stat);
+                    htmlTable += "<td style='text-align: center;'>" + result[i].crew_hp + "</td>";
+                    htmlTable += "<td style='text-align: center;'>" + result[i].scrap_amount + "</td>";
+                    htmlTable += "<td style='text-align: center;'>" + result[i].proficiency_points + "</td>";
 
                     //close the table row after making row
                     htmlTable += "</tr>"
@@ -109,7 +141,7 @@
 
             }
         );
-        
+
     });
 
 </script>

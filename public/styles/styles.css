@@ -99,6 +99,11 @@ html {
   padding: 10px
 }
 
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
 /* Menu Buttons */
 
 .button-box {
@@ -150,6 +155,9 @@ a:hover{
   background-color: #00998018;
 }
 
+.github-icon {
+  margin-top: 50px;
+}
 
 /* Image Frame */
 
@@ -308,8 +316,17 @@ a:hover{
   color: white;
   font-family: 'Press Start 2P';
   width: 830px;
+  margin: 0 auto; 
+}
+
+.lb-logo-container {
   margin: 0 auto;
-  margin-top: 40px; 
+  text-align: center;
+  margin-top: 20px;
+}
+
+.lb-logo {
+  width: 80%;
 }
 
 .lb-button-box {
@@ -319,7 +336,7 @@ a:hover{
 }
 
 .lb-button-holder {
-  width: 25%;
+  width: 33.3%;
   padding: 0 4px 0 4px;
   float: left;
 }
@@ -355,6 +372,22 @@ a:hover{
   background-color: grey;
 }
 
+.lb-get-started {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  display: block;
+}
+
+#leaderboard-table {
+  width: 100%;
+}
+
+.lb-nav-container {
+  width: 50%;
+  float: left;
+}
+
 
 @media only screen and (max-width: 830px) {
 
@@ -380,6 +413,10 @@ a:hover{
     margin: 0 auto;
   }
 
+  .lb-col {
+    width: 80%;
+  }
+
 }
 
 
@@ -387,6 +424,23 @@ a:hover{
 
   .orion-logo {
     width: 80%;
+  }
+
+  .lb-button-holder {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  th, td {
+    padding: 11px;
+  }
+
+  #leaderboard-table {
+    font-size: 13px;
+  }
+
+  .lb-font {
+    font-size: 12px;
   }
 
 }
@@ -399,6 +453,18 @@ a:hover{
     margin: 0 auto;
     margin-top: 30px;
     font-size: .8rem;
+  }
+
+  .title-bar {
+    margin-top: 40px;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  #leaderboard-table {
+    font-size: 9px;
   }
 
 }
@@ -453,6 +519,14 @@ a:hover{
   .image-box {
     width: 100%;
     height: 340px;
+  }
+
+  th, td {
+    padding: 5px;
+  }
+
+  #leaderboard-table {
+    font-size: 8px;
   }
 
 }
